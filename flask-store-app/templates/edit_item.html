@@ -1,9 +1,9 @@
-{% extends 'base.html' %} {% block title %} New Item {% endblock %} {% block
+{% extends 'base.html' %} {% block title %} Item {{ item.title}} {% endblock %} {% block
 content %}
 <div class="flex items-center justify-center">
   <div class="w-4/5">
-    <h1 class="text-4xl font-bold my-5">New Item Form</h1>
-    <form method="POST" action="{{ url_for('new_item') }}">
+    <h1 class="text-4xl font-bold my-5">Edit Item {{ item.title }}</h1>
+    <form method="POST" action="{{ url_for('edit_item', item_id=item.id) }}">
       <!-- hidden_tag: hold the CSF token -->
       {{form.hidden_tag()}}
       <div class="w-1/2 mb-4">
@@ -21,16 +21,6 @@ content %}
         form.description(class="border border-green-600 w-full p-3 rounded-md
         focus:outline-none focus:ring focus:ring-green-300", rows="4",
         cols="50")}}
-      </div>
-      <div class="w-1/2 mb-4">
-        {{ form.category.label(class="my-2")}} {{ form.category(class="border
-        border-green-600 w-full h-10 p-4 rounded-md focus:outline-none
-        focus:ring focus:ring-green-300")}}
-      </div>
-      <div class="w-1/2 mb-4">
-        {{ form.subcategory.label(class="my-2")}} {{
-        form.subcategory(class="border border-green-600 w-full h-10 p-4
-        rounded-md focus:outline-none focus:ring focus:ring-green-300")}}
       </div>
       {{form.submit(class="mt-3 bg-green-400 hover:bg-green-500 shadow-xl
       text-white uppercase text-sm font-semibold px-10 py-3 rounded
